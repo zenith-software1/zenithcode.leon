@@ -3,333 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zenith Code | El Fin de la Era PDF</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@200;300;400;600&family=Space+Mono&display=swap" rel="stylesheet">
+    <title>¿Quiénes Somos? | Zenith Code</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gold: #d4af37;
-            --gold-bright: #f9e297;
-            --dark-bg: #030303;
-            --glass: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
+            --primary-neon: #00d2ff;
+            --secondary-blue: #3a7bd5;
+            --dark-bg: #0a0a0a;
+            --card-bg: #141414;
+            --text-white: #ffffff;
+            --text-gray: #888888;
+            --glow: 0 0 20px rgba(0, 210, 255, 0.2);
         }
 
-        * { box-sizing: border-box; scroll-behavior: smooth; }
-
+        * { box-sizing: border-box; }
         body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
+            margin: 0; padding: 0;
             background-color: var(--dark-bg);
-            color: #ffffff;
-            overflow-x: hidden;
+            color: var(--text-white);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
         }
 
-        .bg-fixed {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #111 0%, #000 100%);
-            z-index: -2;
-        }
+        .container { max-width: 600px; margin: 0 auto; padding: 60px 20px; }
 
-        .bg-grid {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(rgba(212, 175, 55, 0.05) 1px, transparent 1px), 
-                              linear-gradient(90deg, rgba(212, 175, 55, 0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: -1;
-            opacity: 0.3;
-        }
-
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
-
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero-title {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(3rem, 12vw, 7rem);
-            margin: 0;
-            background: linear-gradient(135deg, #fff 30%, var(--gold), var(--gold-bright));
+        header { text-align: center; margin-bottom: 50px; }
+        .logo-text { 
+            font-size: 2.2rem; 
+            font-weight: 900; 
+            letter-spacing: -1px;
+            background: linear-gradient(90deg, var(--primary-neon), var(--secondary-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: 15px;
-            font-weight: 700;
-            line-height: 1;
         }
 
-        .hero-subtitle {
-            font-family: 'Space Mono', monospace;
-            color: var(--gold);
-            font-size: 1.1rem;
-            margin-top: 20px;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            opacity: 0.8;
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            font-size: 0.7rem;
-            letter-spacing: 3px;
-            opacity: 0.4;
-            animation: bounce 2s infinite;
-        }
-
-        .section { padding: 120px 0; opacity: 0; transform: translateY(50px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); }
-        .section.visible { opacity: 1; transform: translateY(0); }
-
-        .section-label {
-            font-family: 'Space Mono', monospace;
-            color: var(--gold);
-            font-size: 0.9rem;
-            display: block;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        h2 {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            color: white;
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .glass-box {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 30px;
-            padding: 50px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .feature-card {
-            padding: 35px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid transparent;
-            transition: 0.4s;
-        }
-
-        .feature-card:hover {
-            border-color: var(--gold);
-            background: rgba(212, 175, 55, 0.05);
-            transform: translateY(-8px);
-        }
-
-        .feature-card h3 {
-            font-family: 'Cinzel', serif;
-            color: var(--gold);
-            font-size: 1.4rem;
+        h2 { 
+            font-size: 1.5rem; 
+            color: var(--primary-neon); 
+            margin-top: 40px; 
             margin-bottom: 15px;
+            text-transform: uppercase;
         }
 
-        .manifesto-text {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            font-weight: 200;
+        .glass-card {
+            background: var(--card-bg);
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid #222;
+            box-shadow: var(--glow);
+        }
+
+        .highlight { color: var(--primary-neon); font-weight: 600; }
+
+        .feature-list { list-style: none; padding: 0; }
+        .feature-list li { margin-bottom: 18px; display: flex; align-items: flex-start; color: #ccc; }
+        .feature-list li::before { content: "✦"; color: var(--primary-neon); margin-right: 12px; }
+
+        /* --- BOTÓN DE REGRESO ACTUALIZADO --- */
+        .btn-back {
+            display: block;
             text-align: center;
-            max-width: 800px;
-            margin: 0 auto 50px;
-        }
-
-        .table-scroll {
-            overflow-x: auto;
-            width: 100%;
-            margin-top: 20px;
-            padding-bottom: 10px;
-        }
-
-        .comparison-table {
-            width: 100%;
-            min-width: 600px;
-            border-collapse: separate;
-            border-spacing: 0 10px;
-        }
-
-        .comparison-table tr { background: rgba(255, 255, 255, 0.01); }
-
-        .comparison-table td, .comparison-table th {
-            padding: 20px;
-            text-align: left;
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .comparison-table th { color: var(--gold); font-family: 'Cinzel', serif; }
-
-        .status-dot {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-        .dot-red { background: #ff4b4b; box-shadow: 0 0 10px #ff4b4b; }
-        .dot-green { background: #00ff88; box-shadow: 0 0 10px #00ff88; }
-
-        .cta-wrap { text-align: center; padding: 100px 0; }
-
-        .btn-zenith {
-            display: inline-block;
-            padding: 22px 55px;
-            font-family: 'Cinzel', serif;
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: black;
-            background: var(--gold);
+            margin: 50px auto 0;
+            padding: 15px 30px;
+            max-width: 250px;
+            background: transparent;
+            color: var(--primary-neon);
+            border: 2px solid var(--primary-neon);
+            border-radius: 50px;
             text-decoration: none;
-            border-radius: 5px;
-            letter-spacing: 4px;
-            transition: 0.5s;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .btn-back:hover {
+            background: var(--primary-neon);
+            color: #000;
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.5);
         }
 
-        .btn-zenith:hover {
-            background: white;
-            box-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
-            transform: scale(1.03);
-        }
-
-        @media (max-width: 768px) {
-            .hero-title { font-size: 3rem; }
-            .glass-box { padding: 25px; border-radius: 20px; }
-            .comparison-table td, .comparison-table th { padding: 15px 10px; font-size: 0.85rem; }
-        }
-
-        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
+        .footer-note { text-align: center; margin-top: 60px; color: #333; font-weight: 900; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
-<div class="bg-fixed"></div>
-<div class="bg-grid"></div>
-
 <div class="container">
-    <header class="hero">
-        <span class="hero-subtitle">Vanguardia Tecnológica</span>
-        <h1 class="hero-title">ZENITH CODE</h1>
-        <p class="hero-subtitle">// ELIMINANDO EL PDF DE TU NEGOCIO</p>
-        <div class="scroll-indicator">EXPERIMENTA EL ZENIT DEL DISEÑO</div>
+    <header>
+        <div class="logo-text">ZENITH CODE</div>
+        <p style="color: var(--text-gray);">Innovación Digital en León, Gto.</p>
     </header>
 
-    <section class="section">
-        <span class="section-label">ESTÁNDAR 01: IDENTIDAD</span>
-        <h2>Ingeniería Restaurantera</h2>
-        <div class="glass-box">
-            <div class="manifesto-text">
-                "En <strong>Zenith Code</strong>, no vendemos plantillas. Desarrollamos herramientas de precisión para la hospitalidad moderna."
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <h3>Nuestra Visión</h3>
-                    <p>Ser el motor tecnológico detrás de los mejores locales de León, elevando la percepción de marca a través de interfaces de lujo.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Nuestra Misión</h3>
-                    <p>Dotar a los restauranteros de herramientas que cargan en milisegundos, aumentando la rotación de mesas y la satisfacción del cliente.</p>
-                </div>
-            </div>
+    <section>
+        <h2>¿Qué somos?</h2>
+        <div class="glass-card">
+            <p>Somos una agencia de <span class="highlight">desarrollo estratégico</span> enfocada en transformar negocios tradicionales en potencias digitales. En León, somos los aliados de los restauranteros que buscan modernidad.</p>
         </div>
     </section>
 
-    <section class="section">
-        <span class="section-label">ESTÁNDAR 02: RENDIMIENTO</span>
-        <h2>Métricas Comparativas</h2>
-        <div class="glass-box">
-            <div class="table-scroll">
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Característica</th>
-                            <th>La Competencia (PDF)</th>
-                            <th>Zenith Interface</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Velocidad de Carga</strong></td>
-                            <td><span class="status-dot dot-red"></span>Lento (Archivo pesado)</td>
-                            <td><span class="status-dot dot-green"></span>Instantáneo (Server-side)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Experiencia Móvil</strong></td>
-                            <td><span class="status-dot dot-red"></span>Zoom manual incómodo</td>
-                            <td><span class="status-dot dot-green"></span>Diseño adaptativo</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Actualización</strong></td>
-                            <td><span class="status-dot dot-red"></span>Reimpresión costosa</td>
-                            <td><span class="status-dot dot-green"></span>Cambios en tiempo real</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Marketing</strong></td>
-                            <td><span class="status-dot dot-red"></span>Sin datos de uso</td>
-                            <td><span class="status-dot dot-green"></span>Análisis de interacción</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+    <section>
+        <h2>¿Qué hacemos?</h2>
+        <div class="glass-card">
+            <ul class="feature-list">
+                <li>Diseñamos <span class="highlight">Menús Digitales</span> interactivos de carga instantánea.</li>
+                <li>Creamos identidades visuales y logotipos profesionales.</li>
+                <li>Integramos sistemas de pedido directo por <span class="highlight">WhatsApp</span>.</li>
+                <li>Fabricamos códigos QR físicos resistentes para tus mesas.</li>
+            </ul>
         </div>
     </section>
 
-    <section class="section">
-        <span class="section-label">ESTÁNDAR 03: EL CÓDIGO</span>
-        <h2>¿Cómo lo hacemos?</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <h3>Cloud Hosting</h3>
-                <p>Tu menú vive en la nube, optimizado para que abra sin retraso en cualquier punto de la ciudad.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Optimización 4K</h3>
-                <p>Compresión inteligente de imágenes para que tus platillos luzcan increíbles sin pesar megas de más.</p>
-            </div>
-            <div class="feature-card">
-                <h3>UX Diamond</h3>
-                <p>Navegación pulida para que el cliente ordene rápido. Menos clicks significan más ventas.</p>
-            </div>
+    <section>
+        <h2>¿Qué mejoramos?</h2>
+        <div class="glass-card">
+            <ul class="feature-list">
+                <li><span class="highlight">Ticket Promedio:</span> Antojamos a tus clientes con fotos de alta calidad.</li>
+                <li><span class="highlight">Gastos:</span> Elimina el costo de reimpresión de menús físicos.</li>
+                <li><span class="highlight">Prestigio:</span> Eleva el estatus de tu negocio frente a la competencia.</li>
+            </ul>
         </div>
     </section>
 
-    <section class="section cta-wrap">
-        <h2>¿Estás listo para el siguiente nivel?</h2>
-        <p style="margin-bottom: 40px; opacity: 0.7;">No dejes que tu competencia se modernice primero.</p>
-        <a href="https://wa.me/524791527895?text=Hola%20Zenith%20Code,%20me%20gustaría%20recibir%20más%20información%20sobre%20el%20menú%20digital." class="btn-zenith">HABLAR CON UN EXPERTO</a>
-    </section>
+    <a href="https://zenith-software1.github.io/zenith-digital-leon/" class="btn-back">
+        REGRESAR AL INICIO
+    </a>
 
-    <footer style="padding-bottom: 50px; text-align: center; font-family: 'Space Mono', monospace; font-size: 0.7rem; opacity: 0.3;">
-        ZENITH CODE // V1.0.4 <br>
-        TELÉFONO DIRECTO: 479 152 7895 <br>
-        POWERED BY NORIEGA
-    </footer>
+    <div class="footer-note">
+        ZENITH CODE &copy; 2026 | LEÓN, GUANAJUATO.
+    </div>
 </div>
-
-<script>
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.section').forEach(s => observer.observe(s));
-</script>
 
 </body>
 </html>
